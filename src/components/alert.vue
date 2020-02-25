@@ -69,31 +69,3 @@
     }
   };
 </script>
-<style>
-  .float {
-    position: fixed;
-    max-width: 400px;
-  }
-  .float-remove {
-    position: relative;
-  }
-  .right {
-    right: 0
-  }
-  .left {
-    left: 0
-  }
-  .top {
-    top: 0
-  }
-  .bottom {
-    bottom: 0
-  }
-  .center {
-    margin: auto !important;
-    margin-top: 4px !important;
-    margin-bottom: 4px !important;
-    left: 0;
-    right:0;
-  }
-</style>
