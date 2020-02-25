@@ -1,8 +1,15 @@
 <template>
   <div class="table-responsive">
     <table class="table table-bordered text-left mb-0">
+      <thead>
       <slot name="thead"></slot>
+      </thead>
+      <tbody>
       <slot name="tbody"></slot>
+      </tbody>
+      <tfoot>
+      <slot name="tfoot"></slot>
+      </tfoot>
     </table>
   </div>
 </template>
