@@ -31,6 +31,7 @@
   .float {
     position: fixed;
     max-width: 400px;
+    z-index: 1001;
   }
   .float-remove {
     position: relative;
