@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  name: "UILinks",
+  name: "vueLinks",
   props:{
     href:{
       type:String,

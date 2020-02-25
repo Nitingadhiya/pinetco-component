@@ -12,7 +12,7 @@
 
 <script>
 export default {
-  name: "UIMediaList",
+  name: "VueMediaList",
   props:{
     media_url: {
       type: String,

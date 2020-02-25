@@ -29,7 +29,7 @@
 
 <script>
   export default {
-    name: "UIFireAlarm",
+    name: "VueFireAlarm",
     props: {
       title: {
         type: String,

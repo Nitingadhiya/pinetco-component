@@ -10,7 +10,7 @@
 
 <script>
   export default {
-    name: "UIFireAlarmTray",
+    name: "VueFireAlarmTray",
     props: {
       x: {
         type: String,

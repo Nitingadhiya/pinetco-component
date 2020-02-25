@@ -1,18 +1,14 @@
 <template>
-  <button type="button" :class="'btn btn-'+class_name" :disabled="disabled"><slot></slot></button>
+  <button type="button" :class="'btn btn-'+classes" :disabled="disabled"><slot></slot></button>
 </template>
 
 <script>
 export default {
-  name: "UIButton",
+  name: "VueButton",
   props:{
-    class_name: {
+    classes: {
       type: String,
       required: true
-    },
-    button_class: {
-      type: String,
-      required: false
     },
     disabled: {
       type: Boolean,

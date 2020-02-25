@@ -1,6 +1,6 @@
 <template>
   <div class="modal fade" :id="id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" :class="custom_class" role="document">
+    <div class="modal-dialog" :class="classes" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">{{title}}</h5>
@@ -12,8 +12,8 @@
           <slot></slot>
         </div>
         <div class="modal-footer border-top-0">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" @click.prevent="saveChanges()">{{save_button_text}}</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+          <button type="button" class="btn btn-primary" @click.prevent="submitChanges()">{{saveButtonText}}</button>
         </div>
       </div>
     </div>
@@ -22,13 +22,13 @@
 
 <script>
 export default {
-  name: "UIConfirmModal",
+  name: "VueConfirmModal",
   props:{
     title: {
       type: String,
       required: false
     },
-    custom_class: {
+    classes: {
       type: String,
       required: false
     },
@@ -36,12 +36,14 @@ export default {
       type: String,
       required: true
     },
-    save_button_text: String,
-    required: true
+    saveButtonText : {
+      type: String,
+      required: true
+    }
   },
   methods: {
-    saveChanges() {
-      this.$emit('save');
+    submitChanges() {
+      this.$emit('submit');
     }
   }
 };

@@ -7,7 +7,7 @@
 
 <script>
 export default {
-  name: "UICard",
+  name: "VueCard",
   props:{
     shadow: {
       type: Boolean,

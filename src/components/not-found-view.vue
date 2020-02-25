@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  name: "UINotFoundMessage",
+  name: "VueNotFoundMessage",
   props: {
     text: {
       type: String,

@@ -4,14 +4,17 @@
 
     <br />
 
-    <Button type="button" class="btn btn-secondary mr-2" @click.prevent="hideAlertMethod()">Alert</Button>
+    <Button type="button" class="btn btn-secondary mr-2 m-3" @click.prevent="hideAlertMethod()">Alert</Button>
     <Button type="button" class="btn btn-secondary mr-2" @click.prevent="hideTableMethod()"> Table </Button>
     <Button type="button" class="btn btn-secondary mr-2" @click.prevent="hideLinksMethod()"> Links </Button>
     <Button type="button" class="btn btn-secondary mr-2" @click.prevent="hideButtonMethod()"> Buttons </Button>
     <Button type="button" class="btn btn-secondary mr-2" @click.prevent="hideMediaListMethod()"> Media List </Button>
     <Button type="button" class="btn btn-secondary mr-2" @click.prevent="hideCardMethod()"> Card </Button>
-    <button type="button" class="btn btn-secondary mr-2" data-toggle="modal" data-target="#exampleModal">
+    <button type="button" class="btn btn-secondary mr-2" data-toggle="modal" data-target="#modal">
       open modal
+    </button>
+    <button type="button" class="btn btn-secondary mr-2" data-toggle="modal" data-target="#exampleModal">
+      confirm modal
     </button>
     <Button type="button" class="btn btn-secondary mr-2" @click.prevent="hideProgressBarMethod()"> Progress Bar </Button>
     <Button type="button" class="btn btn-secondary mr-2" @click.prevent="hideLoadingMethod()"> Loading </Button>
@@ -19,33 +22,41 @@
     <Button type="button" class="btn btn-secondary mr-2" @click.prevent="hideStatMethod()"> Stat </Button>
     <Button type="button" class="btn btn-secondary mr-2" @click.prevent="hideNoDataFoundMethod()"> Message (No Data Found) </Button>
     <Button type="button" class="btn btn-secondary mr-2" @click.prevent="hideErrorMessageMethod()"> Error Message (Authentication) </Button>
+    <Button type="button" class="btn btn-secondary mr-2" @click.prevent="hideToolTipMethod()"> Tooltips </Button>
+    <Button type="button" class="btn btn-secondary mr-2" @click.prevent="hideDropDownMethod()"> Drop down Action </Button>
+
+
     <br />
     <br />
+
+    <!--Tooltip -->
+
+
     <!-- Alert Component -->
-    <UIFireAlarmTray v-if="hideAlert" x="center" y="bottom">
+    <vue-fire-alarm-tray v-if="hideAlert" x="center" y="bottom">
       <template>
-      <UIFireAlarm title="We're having some trouble." type="danger" @close="close" time="1000">
+        <vue-fire-alarm title="We're having some trouble." type="danger" @close="close" time="1000">
+            Hang in there. We're working on fixing this now.
+        </vue-fire-alarm>
+        <vue-fire-alarm title="We're having some trouble." type="success" @close="close" time="2000">
           Hang in there. We're working on fixing this now.
-      </UIFireAlarm>
-        <UIFireAlarm title="We're having some trouble." type="success" @close="close" time="2000">
+        </vue-fire-alarm>
+        <vue-fire-alarm title="We're having some trouble." type="success" @close="close">
           Hang in there. We're working on fixing this now.
-        </UIFireAlarm>
-        <UIFireAlarm title="We're having some trouble." type="success" @close="close">
+        </vue-fire-alarm>
+        <vue-fire-alarm title="We're having some trouble." type="success" @close="close">
           Hang in there. We're working on fixing this now.
-        </UIFireAlarm>
-        <UIFireAlarm title="We're having some trouble." type="success" @close="close">
+        </vue-fire-alarm>
+        <vue-fire-alarm title="We're having some trouble." type="success" @close="close">
           Hang in there. We're working on fixing this now.
-        </UIFireAlarm>
-        <UIFireAlarm title="We're having some trouble." type="success" @close="close">
-          Hang in there. We're working on fixing this now.
-        </UIFireAlarm>
+        </vue-fire-alarm>
       </template>
-    </UIFireAlarmTray>
+    </vue-fire-alarm-tray>
 
     <!-- Alert Component -->
 
     <!---Table Component --->
-    <UITable v-if="hideTable">
+    <vue-table v-if="hideTable">
       <template slot="thead">
         <tr><th v-for="th in table.thead">{{ th }}</th></tr>
       </template>
@@ -57,30 +68,30 @@
           <td>{{td.updated_at}}</td>
         </tr>
       </template>
-    </UITable>
+    </vue-table>
     <!--- Table Component --->
 
     <!--- Links -->
-    <UILinks text="Text link" href="https://google.com" :external="true" color="red" fontSize="14px" v-if="hideLinks" />
+    <vue-links text="Text link" href="https://google.com" :external="true" color="red" fontSize="14px" v-if="hideLinks" />
     <br/><br/>
 
     <!----Button --->
-    <UIButton class_name="danger button_class" :disabled="false" v-if="hideButton">
+    <vue-button classes="danger button_class" :disabled="false" v-if="hideButton">
       Primary idle
-    </UIButton>
+    </vue-button>
 
     <!---- UITile ----->
-    <UIMediaList
+    <vue-media-list
       title="List-based media object"
       media_url="https://five.epicollect.net/api/internal/media/ec5-demo-project?type=photo&name=logo.jpg&format=project_thumb"
       v-if="hideMediaList"
     >
       Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin.
-    </UIMediaList>
+    </vue-media-list>
 
     <!--- UICards --->
 
-    <UICard :shadow="true"  v-if="hideCard">
+    <vue-card :shadow="true"  v-if="hideCard">
       <template slot="header"><div class="card-header">Header</div></template>
       <template slot="body">
         <div class="card-body text">
@@ -88,12 +99,12 @@
           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
         </div>
       </template>
-    </UICard>
+    </vue-card>
 
-    <UICard :shadow="true"  v-if="hideCard">
+    <vue-card :shadow="true"  v-if="hideCard">
       <template slot="header"><div class="card-header">Card With Table View Example</div></template>
       <template slot="body">
-      <UITable>
+      <vue-table>
         <template slot="thead">
           <tr><th v-for="th in table.thead">{{ th }}</th></tr>
         </template>
@@ -105,44 +116,48 @@
             <td>{{td.updated_at}}</td>
           </tr>
         </template>
-      </UITable>
+      </vue-table>
       </template>
-    </UICard>
+    </vue-card>
+
+    <vue-modal id="modal" title="Modal title" classes="modal-xl" @submit="save()" save-button-text="Save">
+      <vue-table>
+        <template slot="thead">
+          <tr><th v-for="th in table.thead">{{ th }}</th></tr>
+        </template>
+        <template slot="tbody">
+          <tr v-for="td in table.tbody">
+            <td>{{td.name}}</td>
+            <td>{{td.responsible_person}}</td>
+            <td>{{td.status}}</td>
+            <td>{{td.updated_at}}</td>
+          </tr>
+        </template>
+      </vue-table>
+    </vue-modal>
 
     <!-- UI Confirm modal--->
-    <UIConfirmModal id="exampleModal" title="Modal title" custom_class="modal-xl" @save="saveChange()" save_button_text="Save Changes">
-      <UITable>
-        <template slot="thead">
-          <tr><th v-for="th in table.thead">{{ th }}</th></tr>
-        </template>
-        <template slot="tbody">
-          <tr v-for="td in table.tbody">
-            <td>{{td.name}}</td>
-            <td>{{td.responsible_person}}</td>
-            <td>{{td.status}}</td>
-            <td>{{td.updated_at}}</td>
-          </tr>
-        </template>
-      </UITable>
-    </UIConfirmModal>
+    <vue-confirm-modal id="exampleModal" title="Confirm Modal title" classes="modal-md" @submit="confirmSubmit()" save-button-text="Yes">
+      Description text
+    </vue-confirm-modal>
 
     <!--- UI Progress Bar --->
-    <UIProgressBar percentage="25" custom_class="progress_bar" v-if="hideProgressBar" color="info" />
+    <vue-progress-bar percentage="25" custom_class="progress_bar" v-if="hideProgressBar" color="info" />
 
     <!-- UI Loading --->
-    <UILoading v-if="hideLoading" />
+    <vue-loading v-if="hideLoading" />
 
     <!-- UI Accordion -->
-    <UIAccordion id="headingOne" v-if="hideAccordion">
+    <vue-accordion id="headingOne" v-if="hideAccordion">
       <template slot="header">Collapse Accordion</template>
       <template slot="body">
         Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
       </template>
-    </UIAccordion>
+    </vue-accordion>
 
     <!--- State -->
-    <UIWell v-if="hideState">
-      <UIState title="Contacts from search" numbers="300%">
+    <vue-well v-if="hideState">
+      <vue-well-item title="Contacts from search" numbers="300%">
         <template slot="link">
           <UILinks text="Text link" href="https://google.com" :external="true" color="red" fontSize="14px" />
           </template>
@@ -151,8 +166,8 @@
             FEB 12 - FEB 28
           </div>
         </template>
-      </UIState>
-      <UIState title="Conversion rate" numbers="50%">
+      </vue-well-item>
+      <vue-well-item title="Conversion rate" numbers="50%">
         <template slot="link">
           <UILinks text="Rate link" href="https://google.com" :external="true" color="green" fontSize="14px" />
         </template>
@@ -161,8 +176,8 @@
             NOV 12 - FEB 28
           </div>
         </template>
-      </UIState>
-      <UIState title="Contacts Gathered" numbers="10,567">
+      </vue-well-item>
+      <vue-well-item title="Contacts Gathered" numbers="10,567">
         <template slot="link">
           <UILinks text="Text link" href="https://google.com" :external="true" color="red" fontSize="14px" />
         </template>
@@ -171,8 +186,8 @@
             JAN 12 - FEB 28
           </div>
         </template>
-      </UIState>
-      <UIState title="Without link" numbers="90.210">
+      </vue-well-item>
+      <vue-well-item title="Without link" numbers="90.210">
         <template slot="link">
           <UILinks text="Text link" href="https://google.com" :external="true" color="red" fontSize="14px" />
         </template>
@@ -181,23 +196,41 @@
             MAR 12 - FEB 28
           </div>
         </template>
-      </UIState>
-    </UIWell>
+      </vue-well-item>
+    </vue-well>
 
     <!--- No data found --->
-    <UINotFoundMessage text="No Data Found" v-if="hideMessage" />
+    <vue-not-found-message text="No Data Found" v-if="hideMessage" />
 
     <!--- Error Message View--->
-    <UIErrorMessage message="You're not allowed in here." v-if="hideErrorMessage">
-      Please provide some text here, <UILinks text="Click here" href="https://google.com" :external="true" color="red" fontSize="14px" />
-    </UIErrorMessage>
+    <vue-error-message message="You're not allowed in here." v-if="hideErrorMessage">
+      Please provide some text here, <vue-links text="Click here" href="https://google.com" :external="true" color="red" fontSize="14px" />
+    </vue-error-message>
+
+    <vue-tool-tip title="Tooltip on top" position="top" v-if="hideToolTip">
+      <button type="button" class="btn btn-secondary m-3">
+        Tooltip on top
+      </button>
+    </vue-tool-tip>
+
+    <vue-drop-down id="dropdownMenuButton" v-if="hideDropDown">
+      <template slot="performer">
+        <div class="border p-2 dropdown-toggle">Drop Down Link</div>
+      </template>
+      <a class="dropdown-item" href="#">Action</a>
+      <a class="dropdown-item" href="#">Another action</a>
+      <a class="dropdown-item" href="#">Something else here</a>
+    </vue-drop-down>
 
   </div>
 </template>
 
 <script>
+import VueWell from "../components/well";
+import VueDropDown from "../components/drop-down";
 export default {
   name: "home",
+  components: {VueDropDown, VueWell},
   data() {
     return {
       hideAlert: false,
@@ -212,6 +245,8 @@ export default {
       hideState: false,
       hideMessage: false,
       hideErrorMessage: false,
+      hideToolTip: false,
+      hideDropDown: false,
       table: {
         thead: ["Name", "Responsible Person", "Status", "Unlocked At"],
         tbody: [
@@ -223,6 +258,11 @@ export default {
         ]
       }
     };
+  },
+  mounted() {
+    $(document).on('mouseenter','[data-toggle="tooltip"]', function (event) {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
   },
   methods: {
     close() {
@@ -264,8 +304,17 @@ export default {
     hideErrorMessageMethod(){
       this.hideErrorMessage = !this.hideErrorMessage;
     },
-    saveChange() {
-      console.log('Save')
+    hideToolTipMethod() {
+      this.hideToolTip = !this.hideToolTip;
+    },
+    hideDropDownMethod() {
+      this.hideDropDown = !this.hideDropDown;
+    },
+    confirmSubmit() {
+      console.log('Confirm modal')
+    },
+    save() {
+      console.log("save")
     }
   }
 };
