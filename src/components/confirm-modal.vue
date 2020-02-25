@@ -12,7 +12,7 @@
           <slot></slot>
         </div>
         <div class="modal-footer border-top-0">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">{{cancelButtonText}}</button>
           <button type="button" class="btn btn-primary" @click.prevent="submitChanges()">{{saveButtonText}}</button>
         </div>
       </div>
@@ -38,8 +38,14 @@ export default {
     },
     saveButtonText : {
       type: String,
-      required: true
-    }
+      required: false,
+      default: 'Yes',
+    },
+    cancelButtonText: {
+      type: String,
+      required: false,
+      default: 'No'
+    },
   },
   methods: {
     submitChanges() {

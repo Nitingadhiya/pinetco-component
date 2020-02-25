@@ -3,6 +3,7 @@
     :href="href"
     :target="external ? '_blank' : '_self'"
     :style="'color:'+color+';font-size:' +fontSize"
+    :class="classes"
   >
     {{text}}
   </a>
@@ -29,6 +30,10 @@ export default {
       required: false
     },
     fontSize:{
+      type: String,
+      required: false
+    },
+    classes: {
       type: String,
       required: false
     }

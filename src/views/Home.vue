@@ -1,5 +1,7 @@
 <template>
-  <div class="home">
+  <div class="page-container">
+  <div class="page">
+    <!-- Write down component here--->
     <img alt="Vue logo" src="../assets/logo.png" />
 
     <br />
@@ -31,9 +33,8 @@
 
     <!--Tooltip -->
 
-
     <!-- Alert Component -->
-    <vue-fire-alarm-tray v-if="hideAlert" x="center" y="bottom">
+    <vue-fire-alarm-tray v-if="hideAlert" x="center" y="top">
       <template>
         <vue-fire-alarm title="We're having some trouble." type="danger" @close="close" time="1000">
             Hang in there. We're working on fixing this now.
@@ -72,11 +73,11 @@
     <!--- Table Component --->
 
     <!--- Links -->
-    <vue-links text="Text link" href="https://google.com" :external="true" color="red" fontSize="14px" v-if="hideLinks" />
+    <vue-links text="Text link test" href="https://google.com" :external="true" color="red" fontSize="14px" v-if="hideLinks" />
     <br/><br/>
 
     <!----Button --->
-    <vue-button classes="danger button_class" :disabled="false" v-if="hideButton">
+    <vue-button classes="danger button_class" :disabled="false" v-if="hideButton" @click="clicked">
       Primary idle
     </vue-button>
 
@@ -84,6 +85,8 @@
     <vue-media-list
       title="List-based media object"
       media_url="https://five.epicollect.net/api/internal/media/ec5-demo-project?type=photo&name=logo.jpg&format=project_thumb"
+      imageClass="rounded-circle"
+      alt=" test image"
       v-if="hideMediaList"
     >
       Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin.
@@ -137,15 +140,12 @@
     </vue-modal>
 
     <!-- UI Confirm modal--->
-    <vue-confirm-modal id="exampleModal" title="Confirm Modal title" classes="modal-md" @submit="confirmSubmit()" save-button-text="Yes">
+    <vue-confirm-modal id="exampleModal" title="Confirm Modal title" classes="modal-md" @submit="confirmSubmit()" save-button-text="Save" cancel-button-text="Close">
       Description text
     </vue-confirm-modal>
 
     <!--- UI Progress Bar --->
-    <vue-progress-bar percentage="25" custom_class="progress_bar" v-if="hideProgressBar" color="info" />
-
-    <!-- UI Loading --->
-    <vue-loading v-if="hideLoading" />
+    <vue-progress-bar percentage="25" classes="progress_bar" v-if="hideProgressBar" color="info" />
 
     <!-- UI Accordion -->
     <vue-accordion id="headingOne" v-if="hideAccordion">
@@ -223,14 +223,14 @@
     </vue-drop-down>
 
   </div>
+    <!-- UI Loading --->
+    <vue-loading v-if="hideLoading" />
+  </div>
 </template>
 
 <script>
-import VueWell from "../components/well";
-import VueDropDown from "../components/drop-down";
 export default {
   name: "home",
-  components: {VueDropDown, VueWell},
   data() {
     return {
       hideAlert: false,
@@ -315,6 +315,9 @@ export default {
     },
     save() {
       console.log("save")
+    },
+    clicked() {
+      console.log('submit method')
     }
   }
 };
