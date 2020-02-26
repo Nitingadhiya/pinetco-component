@@ -1,19 +1,19 @@
 <template>
   <div class="spinner-blur d-flex dummy">
-  <div class="spinner-border m-auto spin-bg" role="status">
-    <span class="sr-only">Loading...</span>
-  </div>
+    <div class="spinner-border m-auto spin-bg" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
   </div>
 </template>
 
 <script>
-export default {
-  name: "VueLoading",
-  mounted() {
-    $(".page, #nav").css('filter', 'blur(5px)');
-    setTimeout(()=> $(".dummy").addClass('active'), 400);
-  },
-};
+  export default {
+    name: "VueLoading",
+    mounted() {
+      $(".page, #nav").css('filter', 'blur(5px)');
+      setTimeout(()=> $(".dummy").addClass('active'), 400);
+    },
+  };
 </script>
 <style>
   .spinner-blur {
