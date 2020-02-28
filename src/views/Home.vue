@@ -229,8 +229,10 @@
 </template>
 
 <script>
+import VueWell from "../components/well";
 export default {
   name: "home",
+  components: {VueWell},
   data() {
     return {
       hideAlert: false,
