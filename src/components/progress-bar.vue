@@ -1,10 +1,12 @@
 <template>
   <div class="progress">
-    <div :class="'progress-bar w-'+percentage+' bg-'+color+' '+classes" role="progressbar"
-         :aria-valuenow="percentage" :aria-valuemin="percentage" aria-valuemax="100"
-    >
-      {{percentage}}%
-    </div>
+    <div
+      :class="'progress-bar w-'+percentage+' bg-'+color+' '+classes"
+      role="progressbar"
+      :aria-valuenow="percentage"
+      :aria-valuemin="percentage"
+      aria-valuemax="100"
+    >{{percentage}}%</div>
   </div>
 </template>
 
@@ -18,13 +20,12 @@ export default {
     },
     color: {
       type: String,
-      required: false,
+      required: false
     },
     classes: {
       type: String,
       required: false
     }
-
   }
 };
 </script>
