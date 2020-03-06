@@ -11,7 +11,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <slot name="title"></slot>
-          <h4 class="modal-title" id="exampleModalLabel" v-if="title">{{title}}</h4>
+          <h4 class="modal-title" :id="id+'Label'" v-if="title">{{title}}</h4>
           <button
             type="button"
             class="close"
